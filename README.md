@@ -131,7 +131,8 @@ where f.ano = 1997;
 ```
 
 -- 5 - 🔍 Buscar os filmes lançados APÓS o ano 2000
-```SqlSELECT 
+```Sql
+SELECT 
 	f.nome, 
 	f.ano, 
 	f.duracao 

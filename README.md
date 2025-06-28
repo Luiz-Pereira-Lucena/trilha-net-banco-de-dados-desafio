@@ -98,7 +98,8 @@ Você deverá criar diversas consultas, com o objetivo de retornar os dados a se
 SELECT 
 	f.nome, 
 	f.ano 
-FROM filmes f ;```
+FROM filmes f ;
+```
 
 -- 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
 ```Sql

@@ -93,44 +93,53 @@ Você deverá criar diversas consultas, com o objetivo de retornar os dados a se
 ## Resolução 
 # Adaptei para usar o banco PostgreSQL.
 
--- 1 - Buscar o nome e ano dos filmes
+-- 1 - 🔍 Buscar o nome e ano dos filmes
+```Sql
 SELECT 
 	f.nome, 
 	f.ano 
-FROM filmes f ;
+FROM filmes f ;```
 
 -- 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
+```Sql
 SELECT 
 	f.nome, 
 	f.ano 
 FROM filmes f 
 order by f.ano asc ;
+```
 
--- 3 - Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
+-- 3 - 🔍 Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
+```Sql
 SELECT 
 	f.nome, 
 	f.ano, 
 	f.duracao 
 FROM filmes f 
 where f.nome  = 'De Volta para o Futuro' ;
+```
 
--- 4 - Buscar os filmes lançados em 1997
+-- 4 - 🔍 Buscar os filmes lançados em 1997
+```Sql
 SELECT 
 	f.nome, 
 	f.ano, 
 	f.duracao 
 FROM filmes f 
 where f.ano = 1997;
+```
 
--- 5 - Buscar os filmes lançados APÓS o ano 2000
-SELECT 
+-- 5 - 🔍 Buscar os filmes lançados APÓS o ano 2000
+```SqlSELECT 
 	f.nome, 
 	f.ano, 
 	f.duracao 
 FROM filmes f 
 where f.ano >= 2000;
+```
 
--- 6 - Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
+-- 6 - 🔍 Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
+```Sql
 SELECT 
 	f.nome, 
 	f.ano, 
@@ -139,8 +148,10 @@ FROM filmes f
 where f.duracao > 100 
 	and f.duracao < 150 
 order by f.duracao asc;
+```
 
--- 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
+-- 7 - 🔍 Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
+```Sql
 SELECT 
     f.ano,
     COUNT(*) quantidade,
@@ -151,16 +162,20 @@ GROUP BY
     ano
 ORDER BY 
     duracao_total DESC;
+```
 
--- 8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
+-- 8 - 🔍 Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
+```Sql
 select 
 	a.primeiro_nome, 
 	a.ultimo_nome, 
 	a.genero 
 from atores a 
 where a.genero = 'M';
+```	
 
--- 9 - Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
+-- 9 - 🔍 Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
+```Sql
 select 
 	a.primeiro_nome, 
 	a.ultimo_nome, 
@@ -168,16 +183,20 @@ select
 from atores a 
 where a.genero = 'F' 
 order by a.primeiro_nome;
+```
 
--- 10 - Buscar o nome do filme e o gênero
+-- 10 - 🔍 Buscar o nome do filme e o gênero
+```Sql
 select 
 	f.nome, 
 	g.genero 
 from filmes f 
 	inner join filmes_genero fg on f.id = fg.id_filme
 	inner join generos g on fg.id_genero = g.id;
+```
 
--- 11 - Buscar o nome do filme e o gênero do tipo "Mistério"
+-- 11 - 🔍 Buscar o nome do filme e o gênero do tipo "Mistério"
+```Sql
 select 
 	f.nome, 
 	g.genero 
@@ -185,8 +204,10 @@ from filmes f
 	inner join filmes_genero fg on f.id = fg.id_filme
 	inner join generos g on fg.id_genero = g.id
 where g.genero = 'Mistério';
+```
 
--- 12 - Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
+-- 12 - 🔍 Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
+```Sql
 select 
 	f.nome, 
 	a.primeiro_nome, 
@@ -196,3 +217,4 @@ from filmes f
 	inner join elenco_filme ef on f.id = ef.id_filme
 	inner join atores a on ef.id_ator = a.id
 order by f.nome , a.ultimo_nome;
+```
